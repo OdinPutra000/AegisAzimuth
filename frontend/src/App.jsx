@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { LayoutDashboard, PieChart, Users, ShieldAlert, BarChart3, Settings, Menu, X, Shield, PlayCircle, Gauge, FileText, RotateCcw } from 'lucide-react';
 
@@ -20,6 +20,9 @@ const SettingsPage = () => <div className="p-10"><h2 className="text-3xl font-se
 
 const Layout = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = React.useState(true);
+  const location = useLocation();
+  const currentPath = location.pathname.split('/')[1] || 'Home';
+  const breadcrumb = currentPath.charAt(0).toUpperCase() + currentPath.slice(1);
 
   return (
     <div className="min-h-screen bg-transparent flex overflow-hidden">
@@ -59,7 +62,7 @@ const Layout = ({ children }) => {
       {/* Main Content */}
       <main className="flex-1 overflow-y-auto">
         <header className="h-16 glass-dark border-b border-white/5 flex items-center justify-between px-8 sticky top-0 z-40">
-           <div className="text-sm text-gray-400">Election AI / {window.location.pathname.split('/')[1] || 'Home'}</div>
+           <div className="text-sm text-gray-400">Election AI / {breadcrumb}</div>
            <div className="flex items-center gap-4">
               <Link to="/login" className="px-4 py-2 bg-primary-600 hover:bg-primary-500 rounded-lg text-sm font-medium transition-all shadow-lg shadow-primary-600/20">Sign In</Link>
            </div>

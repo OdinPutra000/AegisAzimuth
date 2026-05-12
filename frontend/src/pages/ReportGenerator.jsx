@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FileText, Download, Check, Loader2, Sparkles, AlertCircle } from 'lucide-react';
+import { FileText, Download, Check, Loader2, Sparkles, AlertCircle, RotateCcw } from 'lucide-react';
 import GlassCard from '../components/GlassCard';
 import { motion, AnimatePresence } from 'framer-motion';
 
